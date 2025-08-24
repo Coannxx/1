@@ -197,6 +197,33 @@ function iniciarSincronizacaoLetra(audio) {
             
             if (letraAtual) {
                 elementoLetra.textContent = letraAtual.texto;
+                
+                // Aplicar cores especiais em momentos específicos
+                if (letraAtual.inicio === 74) {
+                    // Pausa musical :)
+                    elementoLetra.style.color = '#ff69b4'; // Rosa
+                    elementoLetra.style.fontSize = 'clamp(2rem, 5vw, 4rem)';
+                } else if (letraAtual.inicio === 169) {
+                    // "Me namorar" - momento especial
+                    elementoLetra.style.color = '#ffd700'; // Dourado
+                    elementoLetra.style.fontSize = 'clamp(1.5rem, 4vw, 3rem)';
+                } else if (letraAtual.inicio >= 165 && letraAtual.inicio <= 168) {
+                    // "É uma questão de tempo, até você..." - suspense
+                    elementoLetra.style.color = '#ff6b6b'; // Vermelho coral
+                } else if (letraAtual.inicio >= 10 && letraAtual.inicio <= 30) {
+                    // Primeira estrofe - azul
+                    elementoLetra.style.color = '#87ceeb'; // Azul céu
+                } else if (letraAtual.inicio >= 31 && letraAtual.inicio <= 51) {
+                    // Segunda estrofe - verde
+                    elementoLetra.style.color = '#98fb98'; // Verde claro
+                } else if (letraAtual.inicio >= 52 && letraAtual.inicio <= 73) {
+                    // Terceira estrofe - laranja
+                    elementoLetra.style.color = '#ffa500'; // Laranja
+                } else {
+                    // Cor padrão para outras estrofes
+                    elementoLetra.style.color = '#ffffff'; // Branco
+                }
+                
                 console.log(`🎵 Letra ativa (${letraAtual.inicio}s-${letraAtual.fim}s): ${letraAtual.texto}`);
             }
         }
@@ -208,6 +235,20 @@ function iniciarSincronizacaoLetra(audio) {
         audio.addEventListener('ended', () => {
             clearInterval(intervaloLetra);
             console.log('🎵 Música terminou, sincronização parada');
+            
+            // Ativar vinheta para fechar a tela
+            setTimeout(() => {
+                ativarVinhetaFinal();
+            }, 1000); // Esperar 1 segundo após a música terminar
+        });
+        
+        // Verificar se chegou ao segundo 180 para reiniciar
+        audio.addEventListener('timeupdate', () => {
+            if (audio.currentTime >= 180) {
+                console.log('🎵 Segundo 180 atingido, reiniciando para cena inicial...');
+                clearInterval(intervaloLetra);
+                ativarVinhetaFinal();
+            }
         });
         
         // Parar se a música for pausada
@@ -217,18 +258,31 @@ function iniciarSincronizacaoLetra(audio) {
         });
     }
     
-    // Atualizar a letra a cada 100ms para sincronização suave
-    const intervaloLetra = setInterval(atualizarLetra, 100);
-    
-    // Parar a sincronização quando a música terminar
-    audio.addEventListener('ended', () => {
-        clearInterval(intervaloLetra);
-        console.log('🎵 Música terminou, sincronização parada');
-    });
-    
-    // Parar se a música for pausada
-    audio.addEventListener('pause', () => {
-        clearInterval(intervaloLetra);
-        console.log('🎵 Música pausada, sincronização parada');
-    });
+    // Função para ativar vinheta final após a música terminar
+    function ativarVinhetaFinal() {
+        console.log('🎭 Ativando vinheta final...');
+        
+        // Criar nova vinheta para fechar a tela
+        const vinhetaFinal = document.createElement('div');
+        vinhetaFinal.className = 'vinheta-overlay';
+        vinhetaFinal.style.width = '0';
+        vinhetaFinal.style.height = '0';
+        vinhetaFinal.style.opacity = '0';
+        vinhetaFinal.style.zIndex = '9999';
+        document.body.appendChild(vinhetaFinal);
+        
+        // Fazer a vinheta expandir para cobrir toda a tela
+        setTimeout(() => {
+            vinhetaFinal.style.width = '300vw';
+            vinhetaFinal.style.height = '300vw';
+            vinhetaFinal.style.opacity = '1';
+            console.log('🎭 Vinheta final expandindo...');
+        }, 100);
+        
+        // Após 3 segundos de tela preta, redirecionar para a cena anterior
+        setTimeout(() => {
+            console.log('🎭 Redirecionando para cena anterior...');
+            window.location.href = '../index.html';
+        }, 3000);
+    }
 }
