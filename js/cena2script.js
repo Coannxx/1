@@ -213,15 +213,35 @@ function iniciarSincronizacaoLetra(audio) {
                 } else if (letraAtual.inicio >= 10 && letraAtual.inicio <= 30) {
                     // Primeira estrofe - azul
                     elementoLetra.style.color = '#87ceeb'; // Azul céu
+                    elementoLetra.style.fontSize = 'clamp(1.2rem, 3vw, 2rem)'; // Fonte da primeira parte
                 } else if (letraAtual.inicio >= 31 && letraAtual.inicio <= 51) {
                     // Segunda estrofe - verde
                     elementoLetra.style.color = '#98fb98'; // Verde claro
+                    elementoLetra.style.fontSize = 'clamp(1.2rem, 3vw, 2rem)'; // Fonte da primeira parte
                 } else if (letraAtual.inicio >= 52 && letraAtual.inicio <= 73) {
                     // Terceira estrofe - laranja
                     elementoLetra.style.color = '#ffa500'; // Laranja
+                    elementoLetra.style.fontSize = 'clamp(1.2rem, 3vw, 2rem)'; // Fonte da primeira parte
+                } else if (letraAtual.inicio >= 85 && letraAtual.inicio <= 179) {
+                    // Segunda parte (após o :) - aplicar mesma fonte da primeira parte
+                    elementoLetra.style.fontSize = 'clamp(1.2rem, 3vw, 2rem)'; // Fonte da primeira parte
+                    
+                    // Cores especiais para a segunda parte
+                    if (letraAtual.inicio >= 85 && letraAtual.inicio <= 105) {
+                        elementoLetra.style.color = '#87ceeb'; // Azul céu (repetição)
+                    } else if (letraAtual.inicio >= 106 && letraAtual.inicio <= 126) {
+                        elementoLetra.style.color = '#98fb98'; // Verde claro (repetição)
+                    } else if (letraAtual.inicio >= 127 && letraAtual.inicio <= 148) {
+                        elementoLetra.style.color = '#ffa500'; // Laranja (repetição)
+                    } else if (letraAtual.inicio >= 149 && letraAtual.inicio <= 168) {
+                        elementoLetra.style.color = '#ff6b6b'; // Vermelho coral (repetição)
+                    } else {
+                        elementoLetra.style.color = '#ffffff'; // Branco para outras
+                    }
                 } else {
                     // Cor padrão para outras estrofes
                     elementoLetra.style.color = '#ffffff'; // Branco
+                    elementoLetra.style.fontSize = 'clamp(1.2rem, 3vw, 2rem)'; // Fonte padrão
                 }
                 
                 console.log(`🎵 Letra ativa (${letraAtual.inicio}s-${letraAtual.fim}s): ${letraAtual.texto}`);
