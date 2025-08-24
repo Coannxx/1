@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="Apple House da Mari - Uma casa encantada em formato de maçã">
+    <meta name="keywords" content="casa, maçã, encantada, Mari, Apple House">
+    <meta name="author" content="Gabriel">
+    <meta name="theme-color" content="#e74c3c">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Preload de recursos críticos -->
+    <link rel="preload" href="assets/fundo.png" as="image">
+    <link rel="preload" href="assets/2628418_a3601.gif" as="image">
+    
+    <!-- Fontes do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <title>Apple House🍎</title>
+</head>
+<body>
+    <!-- Casa PNG sobreposta ao céu -->
+    <div class="casa-overlay"></div>
+    
+    <!-- Vinheta circular que se fecha -->
+    <div class="vinheta-overlay" id="vinheta"></div>
+    
+    <!-- Nuvens visíveis -->
+    <div class="nuvem nuvem-1"></div>
+    <div class="nuvem nuvem-2"></div>
+    <div class="nuvem nuvem-3"></div>
+    <div class="nuvem nuvem-4"></div>
+    <div class="nuvem nuvem-5"></div>
+    
+    <!-- Header principal -->
+    <header class="main-header" role="banner">
+        <h1>Bem-vinda à Apple House, Mari! Clique na 🍎 para entrar na casa</h1>
+    </header>
+    
+    <!-- Botão flutuante kawaii -->
+    <div class="floating-text" 
+         onclick="moveText()" 
+         role="button" 
+         tabindex="0" 
+         aria-label="Clique para mover o botão kawaii"
+         onkeydown="handleKeyPress(event)">
+        <img src="assets/hello-kitty-logo-cat-hello-kitty-online-sanrio-sticker-pink-cartoon-png-clipart-removebg-preview.png" 
+             alt="Hello Kitty" 
+             class="hello-kitty-icon">
+        <span class="button-text">🍎</span>
+    </div>
+    
+    <!-- GIF na parte inferior -->
+    <div class="bottom-gif" role="complementary" aria-label="GIF decorativo">
+        <img src="assets/2628418_a3601.gif" 
+             alt="GIF decorativo da Apple House" 
+             loading="lazy"
+             decoding="async">
+    </div>
+    
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+    <!-- Trilha sonora (adicione dentro da tag <body>) -->
+<audio id="trilha-sonora" loop preload="auto">
+    <source src="assets/trilha-cena1.mp3" type="audio/mpeg">
+    <!-- Fallback para navegadores que não suportam audio -->
+    Seu navegador não suporta áudio HTML5.
+</audio>
+</body>
+</html>

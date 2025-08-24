@@ -1,0 +1,259 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body da cena 2 */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #000000, #000000 100%);
+    min-height: 100vh;
+}
+
+/* Tela inicial completamente preta */
+body.initial-black {
+    background-color: #000000 !important;
+}
+
+/* Container principal */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+/* Container visível */
+.main-container.visible {
+    opacity: 1;
+}
+
+/* Header da cena 2 */
+.scene-header h1 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    color: #ffffff;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.scene-header p {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+/* Conteúdo principal */
+.content-area {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 2rem 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 100%;
+}
+
+.content-area h2 {
+    color: #ffffff;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    margin-bottom: 1rem;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+.content-area p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+/* Botões */
+.button-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.btn {
+    background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+    background: linear-gradient(45deg, #ff5252, #ff7979);
+}
+
+.btn-secondary {
+    background: linear-gradient(45deg, #4ecdc4, #44a08d);
+    box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(45deg, #26d0ce, #38a4a1);
+    box-shadow: 0 8px 25px rgba(78, 205, 196, 0.4);
+}
+
+/* Vinheta circular */
+.vinheta-overlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200vw;
+    height: 200vw;
+    background: #000000;
+    border-radius: 50%;
+    z-index: 9999;
+    pointer-events: none;
+    transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    opacity: 1;
+}
+
+.vinheta-overlay.opening {
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+
+/* Texto central da cena 2 */
+.texto-central {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
+    width: 100%;
+    max-width: 800px;
+    padding: 0 20px;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.texto-central h2 {
+    color: #ffffff;
+    font-family: 'Raleway', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    animation: fadeInUp 1.5s ease-out;
+}
+
+/* Animação de entrada do texto */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -30%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Container do GIF de dança - Inicialmente invisível */
+.gif-danca-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    opacity: 0;
+    transition: all 2s ease;
+    pointer-events: none; /* Para não interferir com cliques */
+    /* O GIF permanecerá visível após aparecer */
+}
+
+.gif-danca-container.visible {
+    opacity: 1;
+}
+
+.gif-danca-container.growing .gif-danca {
+    width: 300px; /* Tamanho final bem maior */
+}
+
+/* Garantir que o GIF permaneça visível */
+.gif-danca-container.visible {
+    opacity: 1 !important;
+    display: block !important;
+    visibility: visible !important;
+}
+
+.gif-danca {
+    width: 50px; /* Tamanho inicial bem pequeno */
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: width 15s ease; /* Transição MUITO lenta para o crescimento */
+}
+
+/* Cursor pointer para toda a tela quando clicável */
+body.clickable {
+    cursor: pointer;
+}
+
+/* Letra da música - Input único */
+.letra-musica {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    text-align: center;
+    max-width: 80%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.letra-musica.visible {
+    opacity: 1 !important;
+    display: block !important;
+    visibility: visible !important;
+}
+
+.letra-texto {
+    color: #ffffff;
+    font-family: 'Raleway', sans-serif;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 600;
+    line-height: 1.4;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    transition: all 0.3s ease;
+    min-height: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

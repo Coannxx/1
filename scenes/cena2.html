@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple House - Cena 2</title>
+    
+    <!-- Fontes do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../css/cena2style.css">
+</head>
+<body class="initial-black">
+    <div id="vinheta-cena2" class="vinheta-overlay"></div>
+    
+    <!-- Texto central da cena 2 -->
+    <div class="texto-central">
+        <h2>Agora só falta você clicar para começar a festa!</h2>
+    </div>
+    
+    <!-- GIF de dança que aparece do nada -->
+    <div class="gif-danca-container">
+        <img src="../assets/200w.gif" alt="chama na dancinha" class="gif-danca">
+    </div>
+    
+    <!-- Letra da música - Input único que muda o conteúdo -->
+    <div class="letra-musica">
+        <div id="letra-atual" class="letra-texto">Canta junto com a música, Mari!</div>
+    </div>
+    
+    <!-- Áudio da cena 2 -->
+    <!-- IMPORTANTE: Adicione o arquivo trilha-cena2.mp3 na pasta assets -->
+    <audio id="trilha-cena2" preload="auto">
+        <source src="../assets/trilha-cena2.mp3" type="audio/mpeg">
+    </audio>
+    <script src="../js/cena2script.js"></script>
+</body>
+</html>
