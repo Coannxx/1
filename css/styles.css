@@ -895,19 +895,19 @@ body::before {
 
 .vinheta-overlay.active {
     opacity: 1;
-    width: 200vw;
-    height: 200vw;
+    width: 300vw; /* Aumentado para cobrir mais a tela */
+    height: 300vw; /* Aumentado para cobrir mais a tela */
 }
 
 .vinheta-overlay.closing {
-    width: 200vw;
-    height: 200vw;
+    width: 300vw; /* Aumentado para cobrir mais a tela */
+    height: 300vw; /* Aumentado para cobrir mais a tela */
     opacity: 1;
 }
 
 .vinheta-overlay.closed {
-    width: 200vw;
-    height: 200vw;
+    width: 300vw; /* Aumentado para cobrir mais a tela */
+    height: 300vw; /* Aumentado para cobrir mais a tela */
     opacity: 1;
     background: #000000; /* Fundo completamente preto e sólido */
 }
